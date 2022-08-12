@@ -15,3 +15,11 @@
 #computerText {
     color: red;
 }
+
+button {
+    cursor: pointer
+}
+
+.reload {
+    display: none;
+}

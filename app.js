@@ -16,6 +16,9 @@ choiceBtns.forEach(button => button.addEventListener("click", () => {
     playerText.textContent = `Player: ${player}`;
     computerText.textContent = `Computer: ${computer}`; 
     resultText.textContent = checkWinner();
+    if (playerScore == 10||computerScore == 10) {
+        gameOver(choiceBtns)
+    }
 }))
 
 function computerTurn() {
@@ -75,4 +78,31 @@ function checkWinner(){
         }
     } 
 
+}
+
+const gameOver = (choiceBtns) => {
+    const reloadBtn = document.querySelector(".reload");
+
+    choiceBtns.forEach(option => {
+        option.style.display="none";
+    })
+
+    resultText.textContent = "Game Over"
+
+    if(playerScore>computerScore) {
+        resultText.textContent = "You Won The Game"
+    }
+    else if (playerScore<computerScore) {
+        resultText.textContent = "You Lost The Game"
+    }
+    else {
+        resultText.textContent = "Tie"
+    }
+
+    reloadBtn.innerText ="Restart";
+    reloadBtn.style.display = "inline-block";
+    reloadBtn.style.textAlign = "center"
+    reloadBtn.addEventListener("click",() => {
+        window.location.reload();
+    })
 }
