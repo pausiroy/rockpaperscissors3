@@ -5,6 +5,8 @@ const choiceBtns = document.querySelectorAll(".choiceBtns");
 
 let player;
 let computer;
+let playerScore = 0;
+let computerScore = 0;
 let result;
 
 choiceBtns.forEach(button => button.addEventListener("click", () => {
@@ -33,16 +35,44 @@ function computerTurn() {
 }
  
 function checkWinner(){
+    const playerScoreBoard= document.querySelector(".playerCount");
+    const computerScoreBoard= document.querySelector(".computerCount");
     if(player == computer) {
         return "Draw!";
     }
     else if(computer == "ROCK") {
-        return (player == "PAPER") ? "You Win!" : "You Lose!";
+        if (player == "PAPER") {
+            playerScore++;
+            playerScoreBoard.textContent=playerScore;
+            return "Player Won";
+        } else{ 
+            computerScore++;
+            computerScoreBoard.textContent=computerScore;
+            return "Computer Won";
+        }
     } 
     else if(computer == "PAPER") {
-        return (player == "SCISSORS") ? "You Win!" : "You Lose!";
+        if (player == "SCISSORS") {
+            playerScore++;
+            playerScoreBoard.textContent=playerScore;
+            return "Player Won!"
+        } else{
+            computerScore++;
+            computerScoreBoard.textContent=computerScore;
+            return "Computer Won!";
+        }
     } 
+
     else if(computer == "SCISSORS") {
-        return (player == "ROCK") ? "You Win!" : "You Lose!";
-    }
+        if (player == "ROCK") {
+            playerScore++;
+            playerScoreBoard.textContent=playerScore;
+            return "Player Won!";
+        } else{
+            computerScore++;
+            computerScoreBoard.textContent=computerScore;
+            return "Computer Won!";
+        }
+    } 
+
 }
